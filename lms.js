@@ -392,10 +392,25 @@
     allBoxes.find((box) => (box.innerText || "").includes(needle)) || null;
 
   const extractLink = (box) => {
-    const a = box?.querySelector("a[href]");
-    alert(a)
-    return a ? a.getAttribute("href") : "#";
-  };
+  if (!box) return "#";
+
+  // prioritas: footer link (biasanya tombol "More info")
+  let a = box.querySelector(".small-box-footer");
+
+  // fallback kalau ga ada
+  if (!a) a = box.querySelector("a[href]");
+
+  if (!a) return "#";
+
+  let href = a.getAttribute("href") || "#";
+
+  // normalize jadi absolute URL (biar WebView aman)
+  if (href.startsWith("/")) {
+    href = location.origin + href;
+  }
+
+  return href;
+};
 
   const removeBox = (box) => {
     if (!box) return;
