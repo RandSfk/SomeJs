@@ -378,7 +378,7 @@
   const allBoxes = Array.from(content.querySelectorAll(".small-box"));
 
   const cardsMeta = [
-    { key: "BELUM APPROVED", title: "Status Perwalian", sub: "Lihat status approval berkas perwalian kamu.", cls: "is-alert" },
+    { key: "BELUM APPROVED", title: "ABSENSI", sub: "Lihat status approval berkas perwalian kamu.", cls: "is-alert" },
     { key: "PERWALIAN MAHASISWA", title: "Perwalian Mahasiswa", sub: "Menu perwalian semester berjalan.", cls: "is-good" },
     { key: "Download Kartu Hasil Studi", title: "KHS", sub: "Download hasil studi semester kamu.", cls: "is-good" },
     { key: "Download Kartu Rencana Studi", title: "KRS", sub: "Menu kartu rencana studi.", cls: "is-red" },
@@ -393,6 +393,7 @@
 
   const extractLink = (box) => {
     const a = box?.querySelector("a[href]");
+    alert(a)
     return a ? a.getAttribute("href") : "#";
   };
 
